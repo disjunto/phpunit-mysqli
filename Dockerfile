@@ -35,8 +35,8 @@ CMD ["--help"]
 
 
 # Configure PHP Extensions
-docker-php-ext-install mysqli
-docker-php-ext-install soap
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install soap
 
 # Suppress errors and other interesting bits within php ini
 COPY conf/php.ini /usr/local/etc/php/php.ini
