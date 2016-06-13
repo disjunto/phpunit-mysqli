@@ -1,5 +1,5 @@
 # PHPUnit + Mysql docker container
-FROM phpunit/phpunit
+FROM phpunit/phpunit:4.7.7
 MAINTAINER Alex Davies
 
 # Install PHP Extensions
