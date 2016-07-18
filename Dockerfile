@@ -2,8 +2,12 @@
 FROM composer/composer:php5
 MAINTAINER Alex Davies
 
+# Install Node.js v6
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN apt-get install -y nodejs
+
 # Run some Debian packages installation.
-ENV PACKAGES="php-pear curl libxml2-dev nodejs"
+ENV PACKAGES="php-pear curl libxml2-dev"
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
