@@ -10,7 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Node.js v6
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 # Run xdebug installation.
