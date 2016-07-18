@@ -3,7 +3,7 @@ FROM composer/composer:php5
 MAINTAINER Alex Davies
 
 # Run some Debian packages installation.
-ENV PACKAGES="php-pear curl libxml2-dev"
+ENV PACKAGES="php-pear curl libxml2-dev nodejs"
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
