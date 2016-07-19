@@ -3,7 +3,7 @@ FROM composer/composer:php5
 MAINTAINER Alex Davies
 
 # Run some Debian packages installation.
-ENV PACKAGES="php-pear curl libxml2-dev"
+ENV PACKAGES="php-pear curl libxml2-dev bzip2 libfreetype6 libfontconfig"
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
@@ -14,13 +14,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 # Install phantomjs
-ENV PHANTOMJS_VERSION 2.1.1
-RUN \
-    wget -q --no-check-certificate -O /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 && \
-    tar -xjf /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C /tmp && \
-    rm -f /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 && \
-    mv /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/ /srv/var/phantomjs && \
-    ln -s /srv/var/phantomjs/bin/phantomjs /usr/bin/phantomjs && \
+RUN npm -g install phantomjs-prebuilt
 
 # Run xdebug installation.
 RUN curl -L http://pecl.php.net/get/xdebug-2.4.0.tgz >> /usr/src/php/ext/xdebug.tgz && \
